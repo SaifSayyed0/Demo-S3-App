@@ -40,18 +40,20 @@ TechSpark/
 ├── headphones.jpg
 ├── smartwatch.jpg
 ├── keyboard.jpg
-└── mouse.jpg
+├── mouse.jpg
+├── monitor.jpg       # referenced in script.js — add this image
+└── tablet.jpg        # referenced in script.js — add this image
 ```
 
 ### Features
 
-- Product catalogue rendered from a JavaScript array (6 products across Laptops, Smartphones, Audio, Accessories)
+- Product catalogue rendered from a JavaScript array (8 products across Laptops, Smartphones, Audio, Accessories)
 - Search, category filter, Deals, Electronics and New Arrivals views
 - Shopping cart drawer with add/remove and running total
 - SaaS solutions section
 - Pure client-side code → a perfect fit for S3 static hosting
 
-> ⚠️ **Fix before uploading:** `index.html` and `style.css` in the zip contain a stray Markdown code fence (` ```html ` / ` ```css ` on the first line and ` ``` ` on the last line). These were copied in by accident and will show as visible text or break styling. Delete those lines — see [Troubleshooting](#13-troubleshooting).
+> ℹ️ **Note:** the original upload had stray Markdown code fences in `index.html` and `style.css`, and `script.js` references `monitor.jpg` and `tablet.jpg`, which were not in the zip. Use the corrected `TechSpark-fixed.zip`, and add those two images (see [Troubleshooting](#13-troubleshooting)).
 
 ---
 
@@ -129,7 +131,7 @@ aws s3api put-bucket-versioning \
 ### Console
 
 1. Open your bucket → **Upload** → **Add files**.
-2. Select `index.html`, `style.css`, `script.js` and all six `.jpg` images. **Keep them in the bucket root** — `index.html` references `style.css` and `script.js` with relative paths, and `script.js` references the images by file name only.
+2. Select `index.html`, `style.css`, `script.js` and all `.jpg` images (including `monitor.jpg` and `tablet.jpg` once you add them). **Keep them in the bucket root** — `index.html` references `style.css` and `script.js` with relative paths, and `script.js` references the images by file name only.
 3. Click **Upload**.
 
 ### CLI
@@ -407,6 +409,7 @@ jobs:
 | **403 Forbidden** on the website | Bucket policy missing/wrong, or Block Public Access still on | Re-check Steps 4 & 5; confirm the `Resource` ends in `/*` and the bucket name is exact |
 | **Error saving bucket policy: "Access denied"** | Block Public Access blocks public policies | Untick *Block public policies* (Step 4), check account-level settings too |
 | **404 Not Found** | `index.html` not in bucket root, or wrong index document name | Confirm file name/case, and that Static Website Hosting is enabled |
+| **Monitor / Tablet cards show a placeholder** | `monitor.jpg` and `tablet.jpg` are referenced in `script.js` but weren't in the zip | Add both images to the project root and re-upload |
 | **Images missing (broken icons)** | Image names are case-sensitive or uploaded into a sub-folder | Keep names exactly `laptop.jpg`, `smartphone.jpg`, etc., in the root |
 | **CSS/JS not loading** | Wrong path or wrong content type | Ensure files are in root; re-upload with `aws s3 sync` so MIME types are set automatically |
 | **Old version still showing** | Browser or CDN cache | Hard refresh (Ctrl+Shift+R); invalidate CloudFront if used |
@@ -505,9 +508,9 @@ aws iam delete-policy \
 
 ### Quick Reference Checklist
 
-- [ ] Remove stray ` ``` ` fences from `index.html` and `style.css`
+- [ ] Use the fixed files (stray ` ``` ` fences removed) and add `monitor.jpg` + `tablet.jpg`
 - [ ] Create bucket (unique name, correct region)
-- [ ] Upload all 9 files to the bucket **root**
+- [ ] Upload all files to the bucket **root**
 - [ ] Enable static website hosting (`index.html`)
 - [ ] Relax Block Public Access (policy-related settings only)
 - [ ] Apply bucket policy (public `GetObject`) with the real bucket name
