@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="TechSpark - Electronics, Gadgets and SaaS Solutions"
+    >
+
+    <title>TechSpark | Electronics & SaaS</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+<header class="header">
+
+
+    <!-- LOGO -->
+
+    <div
+        class="logo"
+        onclick="goHome()"
+    >
+
+        <span class="logo-bolt">⚡</span>
+
+        <span>
+            Tech<span class="spark">Spark</span>
+        </span>
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="location">
+
+        <small>Deliver to</small>
+
+        <strong>
+            📍 Pune, India
+        </strong>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <select id="category">
+
+            <option value="All">
+                All
+            </option>
+
+            <option value="Laptops">
+                Laptops
+            </option>
+
+            <option value="Smartphones">
+                Smartphones
+            </option>
+
+            <option value="Audio">
+                Audio
+            </option>
+
+            <option value="Accessories">
+                Accessories
+            </option>
+
+        </select>
+
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search electronics, gadgets and SaaS..."
+            autocomplete="off"
+        >
+
+
+        <button
+            onclick="searchProducts()"
+            aria-label="Search"
+        >
+            🔍
+        </button>
+
+    </div>
+
+
+    <!-- HEADER ACTIONS -->
+
+    <div class="header-actions">
+
+
+        <div class="account">
+
+            <small>
+                Hello, User
+            </small>
+
+            <strong>
+                Account
+            </strong>
+
+        </div>
+
+
+        <div class="orders">
+
+            <small>
+                Your
+            </small>
+
+            <strong>
+                Orders
+            </strong>
+
+        </div>
+
+
+        <div
+            class="cart"
+            onclick="openCart()"
+        >
+
+            🛒
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     NAVIGATION BAR
+===================================================== -->
+
+<nav class="nav">
+
+
+    <div class="nav-left">
+
+
+        <button
+            onclick="showAllProducts()"
+        >
+            ☰ All
+        </button>
+
+
+        <button
+            onclick="showDeals()"
+        >
+            🏷️ Today's Deals
+        </button>
+
+
+        <button
+            onclick="showElectronics()"
+        >
+            💻 Electronics
+        </button>
+
+
+        <button
+            onclick="scrollToSection('saas')"
+        >
+            ☁️ SaaS
+        </button>
+
+
+        <button
+            onclick="showNewArrivals()"
+        >
+            ✨ New Arrivals
+        </button>
+
+
+    </div>
+
+
+    <div class="nav-right">
+
+
+        <button
+            onclick="showDeals()"
+        >
+            ⚡ TechSpark Deals
+        </button>
+
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <!-- CENTERED TECHSPARK -->
+
+        <div class="hero-logo">
+
+
+            <span class="hero-bolt">
+                ⚡
+            </span>
+
+
+            <h1>
+                Tech<span>Spark</span>
+            </h1>
+
+
+        </div>
+
+
+        <div class="hero-line"></div>
+
+
+        <p class="hero-tagline">
+            Powering Your Digital World
+        </p>
+
+
+        <p class="hero-description">
+
+            Discover the latest electronics,
+            smart gadgets, accessories and
+            powerful SaaS solutions — all in
+            one place.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <button
+                class="hero-button"
+                onclick="showAllProducts()"
+            >
+                Explore Products →
+            </button>
+
+
+            <button
+                class="hero-button secondary"
+                onclick="scrollToSection('saas')"
+            >
+                Explore SaaS ☁️
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FLOATING ELEMENTS -->
+
+    <div class="floating-card card-one">
+
+        💻
+
+        <span>
+            Smart Tech
+        </span>
+
+    </div>
+
+
+    <div class="floating-card card-two">
+
+        ☁️
+
+        <span>
+            Cloud SaaS
+        </span>
+
+    </div>
+
+
+    <div class="floating-card card-three">
+
+        🚀
+
+        <span>
+            Innovation
+        </span>
+
+    </div>
+
+
+    <div class="floating-card card-four">
+
+        🎧
+
+        <span>
+            New Gadgets
+        </span>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section class="categories">
+
+
+    <div class="section-title">
+
+        <span>
+            EXPLORE
+        </span>
+
+        <h2>
+            Shop by Category
+        </h2>
+
+        <p>
+            Find the technology you need.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div
+            class="category-card"
+            onclick="filterCategory('Laptops')"
+        >
+
+            <div class="category-icon">
+                💻
+            </div>
+
+            <h3>
+                Laptops
+            </h3>
+
+            <p>
+                Powerful computing
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            onclick="filterCategory('Smartphones')"
+        >
+
+            <div class="category-icon">
+                📱
+            </div>
+
+            <h3>
+                Smartphones
+            </h3>
+
+            <p>
+                Stay connected
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            onclick="filterCategory('Audio')"
+        >
+
+            <div class="category-icon">
+                🎧
+            </div>
+
+            <h3>
+                Audio
+            </h3>
+
+            <p>
+                Immersive sound
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            onclick="filterCategory('Accessories')"
+        >
+
+            <div class="category-icon">
+                ⌨️
+            </div>
+
+            <h3>
+                Accessories
+            </h3>
+
+            <p>
+                Upgrade your setup
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            onclick="scrollToSection('saas')"
+        >
+
+            <div class="category-icon">
+                ☁️
+            </div>
+
+            <h3>
+                SaaS
+            </h3>
+
+            <p>
+                Cloud solutions
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+    class="products-section"
+    id="products"
+>
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-label">
+                TECHSPARK STORE
+            </span>
+
+            <h2>
+                Trending Electronics
+            </h2>
+
+            <p>
+                Discover products loved by tech enthusiasts.
+            </p>
+
+        </div>
+
+
+        <button
+            class="view-all"
+            onclick="showAllProducts()"
+        >
+            View All →
+        </button>
+
+
+    </div>
+
+
+    <!-- PRODUCTS GENERATED BY JAVASCRIPT -->
+
+    <div
+        class="product-grid"
+        id="productGrid"
+    >
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SAAS SECTION
+===================================================== -->
+
+<section
+    class="saas-section"
+    id="saas"
+>
+
+
+    <div class="saas-content">
+
+
+        <span class="saas-badge">
+            ☁️ TECHSPARK CLOUD
+        </span>
+
+
+        <h2>
+
+            Powerful SaaS.
+
+            <span>
+                Built for the Future.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Explore productivity,
+            collaboration, analytics and
+            cloud solutions designed to help
+            teams work smarter and faster.
+
+        </p>
+
+
+        <button
+            onclick="showSaaSMessage()"
+        >
+            Explore SaaS Solutions →
+        </button>
+
+
+    </div>
+
+
+    <div class="saas-visual">
+
+
+        <div class="cloud-circle">
+            ☁️
+        </div>
+
+
+        <div class="orbit orbit-one"></div>
+
+        <div class="orbit orbit-two"></div>
+
+
+        <div class="orbit-dot dot-one"></div>
+
+        <div class="orbit-dot dot-two"></div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     DEAL BANNER
+===================================================== -->
+
+<section class="deal-banner">
+
+
+    <div>
+
+        <span>
+            ⚡ LIMITED TIME
+        </span>
+
+
+        <h2>
+            TechSpark Mega Deals
+        </h2>
+
+
+        <p>
+            Upgrade your technology setup
+            with amazing offers.
+        </p>
+
+    </div>
+
+
+    <button
+        onclick="showDeals()"
+    >
+        Shop Deals →
+    </button>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-main">
+
+
+        <div class="footer-brand">
+
+
+            <div class="footer-logo">
+
+                <span>
+                    ⚡
+                </span>
+
+                Tech<span>Spark</span>
+
+            </div>
+
+
+            <p>
+
+                Your destination for
+                electronics, gadgets and
+                modern SaaS solutions.
+
+            </p>
+
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Get to Know Us
+            </h3>
+
+            <p>
+                About TechSpark
+            </p>
+
+            <p>
+                Careers
+            </p>
+
+            <p>
+                Contact Us
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Customer Support
+            </h3>
+
+            <p>
+                Help Center
+            </p>
+
+            <p>
+                Returns
+            </p>
+
+            <p>
+                Shipping
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                TechSpark
+            </h3>
+
+            <p
+                onclick="showAllProducts()"
+            >
+                Electronics
+            </p>
+
+            <p
+                onclick="scrollToSection('saas')"
+            >
+                SaaS Solutions
+            </p>
+
+            <p
+                onclick="showDeals()"
+            >
+                Deals
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 TechSpark.
+        All Rights Reserved.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================================
+     CART OVERLAY
+===================================================== -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+>
+
+
+    <div class="cart-modal">
+
+
+        <button
+            class="close-cart"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+
+        <h2>
+            🛒 Your Cart
+        </h2>
+
+
+        <div
+            id="cartItems"
+            class="cart-items"
+        >
+
+        </div>
+
+
+        <div class="cart-total">
+
+            <strong>
+                Total:
+            </strong>
+
+            <strong id="cartTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button
+            class="checkout-button"
+            onclick="checkout()"
+        >
+            Proceed to Checkout
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
